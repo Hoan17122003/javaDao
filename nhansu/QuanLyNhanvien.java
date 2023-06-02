@@ -1,12 +1,13 @@
 package nhansu;
 
+import java.util.ArrayList;
+
 import daodb.DaoDB;
 
-public class QuanLyNhanvien extends Nhanvien {
+public class QuanLyNhanvien {
     private static QuanLyNhanvien quanly;
-    private static Nhanvien nhanvien;
-    private static float luong;
-    private static QuanLyNhanVienDao quanlynhanviendao;
+    private static ArrayList<Nhanvien> containNhanVien;
+    private static ArrayList<Float> containLuongNhanVien;
 
     public static QuanLyNhanvien getInstace() {
         if (quanly == null) {
@@ -15,23 +16,23 @@ public class QuanLyNhanvien extends Nhanvien {
         return quanly;
     }
 
-    public Nhanvien getNhanvien() {
-        return this.nhanvien;
+    public ArrayList<Float> getContainLuongNhanVien() {
+        return this.containLuongNhanVien;
     }
 
-    public float getLuong() {
-        if (nhanvien.getSoNamLamViec() >= 1)
-            this.luong += luong * 1.5;
-        return this.luong;
+    public ArrayList<Nhanvien> getContainNhanVien() {
+        return this.containNhanVien;
     }
 
     public void add(Nhanvien nv) {
         int luongcung = 1000;
-        this.nhanvien = nv;
-        if (this.nhanvien.getbangcap() == "ki su") {
-            this.luong = (float) (luongcung * 1.5);
+        containNhanVien.add(nv);
+        for (int i = 0; i < containNhanVien.size(); i++) {
+            if (containNhanVien.get(i).getbangcap() == "ki su") {
+                containLuongNhanVien.add((float) (luongcung * 1.5 * 1.f));
+            }
         }
-        this.luong = luongcung * 1.f;
+        // this.luong = luongcung * 1.f;
     }
 
 }

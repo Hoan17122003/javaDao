@@ -16,5 +16,5 @@ public interface DaoDB<T> {
 
     public void save(T item) throws SQLException;
 
-    public void display(T item, String valueSearch) throws SQLException;
+    public void display(String valueSearch) throws SQLException;
 }
